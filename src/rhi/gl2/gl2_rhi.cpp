@@ -1965,8 +1965,10 @@ void Gl2Rhi::copy_framebuffer_to_texture(
 	SRB2_ASSERT(src_region.y + src_region.h <= src_dim.h);
 
 	GLenum read_buffer = is_back ? GL_BACK_LEFT : GL_COLOR_ATTACHMENT0;
+#if 0 // glReadBuffer isn't in gles2	
 	gl_->ReadBuffer(read_buffer);
 	GL_ASSERT;
+#endif
 
 	gl_->BindTexture(GL_TEXTURE_2D, tex.texture);
 	GL_ASSERT;
